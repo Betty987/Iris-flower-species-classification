@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        .result-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .result-box p {
+            font-size: 20px;
+            color: #555;
+        }
+
+        .result-box .prediction {
+            font-size: 30px;
+            color: #007bff;
+            margin-top: 10px;
+        }
+
+        .flower-image {
+            margin-top: 20px;
+        }
+
+        .flower-image img {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .button-container a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <div class="result-box">
+            <p>The model predicts:</p>
+            <div class="prediction">{{ prediction }}</div>
+
+            <!-- Flower Image Based on Prediction -->
+            <div class="flower-image">
+                {% if prediction == 'Iris Setosa' %}
+                <img src="{{ url_for('static', filename='irissetosa.png') }}" alt="Iris Setosa" width="20" height="20">
+                {% elif prediction == 'Iris Versicolor' %}
+                <img src="{{ url_for('static', filename='irisversicolor.png') }}" alt="Iris Versicolor" width="20" height="20">
+                {% elif prediction == 'Iris Virginica' %}
+                <img src="{{ url_for('static', filename='irisvirginica.png') }}" alt="Iris Virginica" width="20" height="20">
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="button-container">
+            <a href="{{ url_for('home') }}">Make another prediction</a>
+        </div>
+    </div>
+</body>
+</html>

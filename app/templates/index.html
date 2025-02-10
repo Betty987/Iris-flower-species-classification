@@ -1,1 +1,131 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Flower Species Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 50%;
+            padding: 10px;
+            font-size: 14px;
+            margin: 5px 0 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .flower-images {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .flower-images img {
+            width: 150px;
+            height: 150px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .flower-images div {
+            text-align: center;
+        }
+
+        .flower-images div p {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Iris Flower Species Classification</h1>
+        <p>Enter the sepal and petal measurements to predict the iris flower species.</p>
+
+        <!-- Form for input -->
+        <form action="{{ url_for('predict') }}" method="POST">
+            <label for="sepal_length">Sepal Length (cm):</label>
+            <input type="text" name="feature1" id="sepal_length" required><br>
+
+            <label for="sepal_width">Sepal Width (cm):</label>
+            <input type="text" name="feature2" id="sepal_width" required><br>
+
+            <label for="petal_length">Petal Length (cm):</label>
+            <input type="text" name="feature3" id="petal_length" required><br>
+
+            <label for="petal_width">Petal Width (cm):</label>
+            <input type="text" name="feature4" id="petal_width" required><br>
+
+            <button type="submit">Classify Flower</button>
+        </form>
+
+        <!-- Flower Images Section -->
+        <div class="flower-images">
+            <div>
+                <img src="{{ url_for('static', filename='irissetosa.png') }}" alt="Iris Setosa" width="20" height="20">
+                <p>Iris Setosa</p>
+            </div>
+            
+            <div>
+                <img src="{{ url_for('static', filename='irisversicolor.png') }}" alt="Iris Versicolor" width="20" height="20">
+                <p>Iris Versicolor</p>
+            </div>
+            
+            <div>
+                <img src="{{ url_for('static', filename='irisvirginica.png') }}" alt="Iris Virginica" width="20" height="20">
+                <p>Iris Virginica</p>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
